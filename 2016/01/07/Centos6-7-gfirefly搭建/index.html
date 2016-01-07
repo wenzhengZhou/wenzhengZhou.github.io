@@ -3,18 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>What Are Words | WenZheng&#39;s</title>
+  <title>Centos6.7 gfirefly搭建 | WenZheng&#39;s</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Anywhere you are, i am nearAnywhere you go, i’ll be thereAnytime you whisper my name, you’ll see">
+  <meta name="description" content="升级 python 到python2.7Twisted需要python2.7以上的版本 
+
+Install mysqlyum install -y mysql-server mysql mysql-devel
+
+Install setuptools见https://pypi.python.org/pypi/setuptools说明wget https://bootstrap.pypa.io/ze_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What Are Words">
-<meta property="og:url" content="http://yoursite.com/2015/12/30/What-Are-Words/index.html">
+<meta property="og:title" content="Centos6.7 gfirefly搭建">
+<meta property="og:url" content="http://yoursite.com/2016/01/07/Centos6-7-gfirefly搭建/index.html">
 <meta property="og:site_name" content="WenZheng's">
-<meta property="og:description" content="Anywhere you are, i am nearAnywhere you go, i’ll be thereAnytime you whisper my name, you’ll see">
-<meta property="og:updated_time" content="2015-12-30T04:59:16.807Z">
+<meta property="og:description" content="升级 python 到python2.7Twisted需要python2.7以上的版本 
+
+Install mysqlyum install -y mysql-server mysql mysql-devel
+
+Install setuptools见https://pypi.python.org/pypi/setuptools说明wget https://bootstrap.pypa.io/ze_">
+<meta property="og:updated_time" content="2016-01-07T08:54:03.434Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="What Are Words">
-<meta name="twitter:description" content="Anywhere you are, i am nearAnywhere you go, i’ll be thereAnytime you whisper my name, you’ll see">
+<meta name="twitter:title" content="Centos6.7 gfirefly搭建">
+<meta name="twitter:description" content="升级 python 到python2.7Twisted需要python2.7以上的版本 
+
+Install mysqlyum install -y mysql-server mysql mysql-devel
+
+Install setuptools见https://pypi.python.org/pypi/setuptools说明wget https://bootstrap.pypa.io/ze_">
   
     <link rel="alternative" href="/atom.xml" title="WenZheng&#39;s" type="application/atom+xml">
   
@@ -62,14 +74,14 @@
   </div>
 </div>
       <div class="outer">
-        <section id="main"><article id="post-What-Are-Words" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Centos6-7-gfirefly搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/30/What-Are-Words/" class="article-date">
-  <time datetime="2015-12-30T04:56:48.000Z" itemprop="datePublished">2015-12-30</time>
+    <a href="/2016/01/07/Centos6-7-gfirefly搭建/" class="article-date">
+  <time datetime="2016-01-07T04:49:26.000Z" itemprop="datePublished">2016-01-07</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/life/">life</a>
+    <a class="article-category-link" href="/categories/gfirefly/">gfirefly</a>
   </div>
 
   </div>
@@ -80,7 +92,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      What Are Words
+      Centos6.7 gfirefly搭建
     </h1>
   
 
@@ -88,15 +100,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Anywhere you are, i am near<br>Anywhere you go, i’ll be there<br>Anytime you whisper my name, you’ll see</p>
+        <ul>
+<li><p>升级 python 到python2.7<br>Twisted需要python2.7以上的版本 </p>
+</li>
+<li><p>Install mysql<br>yum install -y mysql-server mysql mysql-devel</p>
+</li>
+<li><p>Install setuptools<br>见<a href="https://pypi.python.org/pypi/setuptools说明" target="_blank" rel="external">https://pypi.python.org/pypi/setuptools说明</a><br>wget <a href="https://bootstrap.pypa.io/ze_setup.py" target="_blank" rel="external">https://bootstrap.pypa.io/ze_setup.py</a> -O - | sudo python</p>
+</li>
+<li><p>Install git<br>yum install -y git</p>
+</li>
+<li><p>Download gfirefly<br>git clone <a href="https://github.com/9miao/G-Firefly.git" target="_blank" rel="external">https://github.com/9miao/G-Firefly.git</a></p>
+</li>
+<li><p>Install gfirefly<br>cd G-Firefly/gfirefly<br>sudo python setup.py build<br>sudo python setup.py install</p>
+</li>
+<li><p>安装成功,创建示例<br>python gfirefly/script/gfirefly-admin.py createproject ~/mygamesvr<br>cd ~/mygamesvr<br>sudo python startmaster.py</p>
+<p>打开别一个终端<br>cd ~/mygamesvr/tool<br>sudo python clienttest.py</p>
+<p>服务器正确关闭方法<br><a href="http://ip:port/stop" target="_blank" rel="external">http://ip:port/stop</a></p>
+</li>
+</ul>
+<hr>
+<p>遇到的问题</p>
+<ol>
+<li><p>安装MySQL-python 时出现错误 error: Setup script exited with error: command ‘gcc’ failed with exit status1<br>gcc已安装,应该是某个依赖库没装<br>yum install mysql-devel</p>
+</li>
+<li><p>ImportError: Twisted requires Python 2.7 or later<br>升级python 到 python2.7</p>
+</li>
+<li><p>setup.py 安装Twisted错误, error: Not a recognized archive type: /tmp/easy_install…….<br>手动安装Twisted<br>wget 错误信息上面有地址<br>tar -jxvf Twisted.tar.bz2<br>cd Twisted<br>sudo python setup.py install</p>
+</li>
+<li><p>ZMQ错误,<br>手动安装zeromq<br>wget <a href="http://download.zeromq.org/zeromq-2.2.0.tar.gz" target="_blank" rel="external">http://download.zeromq.org/zeromq-2.2.0.tar.gz</a><br>tar -zxvf zeromq<br>cd zeromq<br>./configure<br>make<br>sudo make install</p>
+<p>出现的错误 configure: error: cannot link with -luuid, install uuid-dev<br>yum install uuid-devel<br>yum install libuuid-devel</p>
+</li>
+<li><p>运行gfirefly实例,日志输出<br>node [0] lose<br>node [1] lose</p>
+<p>需要将gevent的版本换成1.0.2<br>wget –no-check-certificate <a href="https://pypi.python.org/packages/source/g/gevent/gevent-1.0.2.tar.gz#md5=117f135d57ca7416203fba3720bf71c1" target="_blank" rel="external">https://pypi.python.org/packages/source/g/gevent/gevent-1.0.2.tar.gz#md5=117f135d57ca7416203fba3720bf71c1</a><br>tar -zxvf gevent<br>cd gevent<br>sudo python setup.py install</p>
+</li>
+<li><p>安装easy_install报错”urllib2.URLError:<urlopen error="" unknown="" url="" type:https="">“<br>yum install openssl-devel</urlopen></p>
+</li>
+<li><p>python-eggs错误<br>perhaps your account does not have write access to this directory? you can change the cache directory by setting the PYTHON_EGG_CACHE environment variable to point to an accessible directory<br>mkdir ~/.python-eggs<br>mkdir /tmp/python-eggs<br>export PYTHON_EGG_CACHE /tmp/python-eggs</p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/What-Are-Words/" data-id="cij40p0kr000d24cmg71145gp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/07/Centos6-7-gfirefly搭建/" data-id="cij40p0kx000j24cmxrl16gea" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gfirefly/">gfirefly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -104,19 +153,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/31/My-Girls/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          My Girls
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/12/30/centos6-7-安装python3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/01/06/centos6-7-python2-6升级到python2-7/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">centos6.7 安装python3</div>
+      <div class="article-nav-title">centos6.7 python2.6升级到python2.7</div>
     </a>
   
 </nav>
