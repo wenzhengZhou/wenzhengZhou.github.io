@@ -15,7 +15,7 @@
 <meta property="og:description" content="查看当前python版本python -Vcentos6.7 自带了python2.6
 
 下载安装wget https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgztar -zxvf Python-2.7.11.tgzcd Python-2.7.11./configuremake allmake installmake cleanmake">
-<meta property="og:updated_time" content="2016-01-07T06:12:01.680Z">
+<meta property="og:updated_time" content="2016-01-11T05:33:47.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos6.7 python2.6升级到python2.7">
 <meta name="twitter:description" content="查看当前python版本python -Vcentos6.7 自带了python2.6
@@ -99,6 +99,9 @@
 </li>
 <li><p>下载安装<br>wget <a href="https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz" target="_blank" rel="external">https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz</a><br>tar -zxvf Python-2.7.11.tgz<br>cd Python-2.7.11<br>./configure<br>make all<br>make install<br>make clean<br>make distclean</p>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>建立软连接<br>ln -s /usr/local/bin/python2.7 /usr/bin/python</p>
 </li>
 <li><p>解决系统相关的兼容问题<br>1 yum问题<br>  vim /usr/bin/yum<br>  将文件头部的 #!/usr/bin/python 改为 #!/usr/bin/python2.6</p>
