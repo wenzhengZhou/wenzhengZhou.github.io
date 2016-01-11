@@ -63,6 +63,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-自己搭的梯子就是快" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/11/自己搭的梯子就是快/" class="article-date">
+  <time datetime="2016-01-11T02:49:56.000Z" itemprop="datePublished">2016-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/11/自己搭的梯子就是快/">自己搭的梯子就是快</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在vultr上买个了vps, 正好在上面搭个梯子玩玩,那些免费的梯子时好时坏,不稳定.</p>
+<hr>
+<h2 id="u670D_u52A1_u7AEF_u5B89_u88C5"><a href="#u670D_u52A1_u7AEF_u5B89_u88C5" class="headerlink" title="服务端安装"></a>服务端安装</h2><p>系统: Centos6.7</p>
+<ol>
+<li>将python 升级到 python2.7</li>
+<li>安装setuptools</li>
+<li>安装pip,  pip 类似 redhat里的yum<br>wget “<a href="https://pypi.python.org/" target="_blank" rel="external">https://pypi.python.org/</a>…….”<br>tar -zxvf pip<br>cd pip<br>python setup.py install</li>
+<li>安装相关组建<br>yum install build-essential autoconf libtool openssl-devel gcc -y</li>
+<li><p>安装git, 下载shadowsocks, 安装<br>yum install git -y<br>git clone <a href="https://github.com/madeye/shadowsocks-libev.git" target="_blank" rel="external">https://github.com/madeye/shadowsocks-libev.git</a><br>cd shadowsocks-libev<br>./configure<br>make &amp;&amp; make install</p>
+<p>配置config.json<br>{<br>   “server”: “server ip”,<br>   “server_port”: port,<br>   “password”:”password”,<br>   “timeout”:60,<br>   “method”:”rc4-md5”<br>}</p>
+<p>运行<br>ss-server -c ~/config.json -f /tmp/ss.pid</p>
+</li>
+</ol>
+<hr>
+<h2 id="u8FD9_u6837_u670D_u52A1_u7AEF_u5C31_u642D_u597D_u4E86_2C__u4E0B_u9762_u914D_u7F6E_u5BA2_u6237_u7AEF"><a href="#u8FD9_u6837_u670D_u52A1_u7AEF_u5C31_u642D_u597D_u4E86_2C__u4E0B_u9762_u914D_u7F6E_u5BA2_u6237_u7AEF" class="headerlink" title="这样服务端就搭好了, 下面配置客户端"></a>这样服务端就搭好了, 下面配置客户端</h2><p>ss-qt5, chrome+SwitchySharp+gfwlist<br>配置起来很简单,就不多写了</p>
+<hr>
+<h2 id="supervisor__u6258_u7BA1_ss"><a href="#supervisor__u6258_u7BA1_ss" class="headerlink" title="supervisor 托管 ss"></a>supervisor 托管 ss</h2><ol>
+<li>安装<br>pip install supervisor </li>
+<li>初始化<br>echo_supervisord_conf &gt; /etc/supervisord.conf<br>vim /etc/suervisord.conf<br>在后面加入<br>[program:shadowsocks]<br>command = ss-server -c /home/zc/config.json<br>user = zc<br>autostart = true<br>autorestart = true<br>stderr_logfile = /var/log/supervisor/ss.stderr.log<br>stdout_logfile = /var/log/supervisor/ss.stdout.log</li>
+<li><p>运行supervisor<br>supervisord -c /etc/suervisord.conf</p>
+<p>supervisor相关控制命令<br>supervisorctl start all<br>supervisorctl stop all<br>supervisorctl restart all</p>
+<p>supervisorctl start shadowsocks</p>
+</li>
+<li><p>设为开机启动<br>vi /etc/rc.local<br>加入 supervisord -c /etc/suervisord.conf</p>
+</li>
+</ol>
+<hr>
+<p>遇到的问题</p>
+<ol>
+<li><p>pip安装第三方模块时提示 urllib3 的 SSL 连接失败错误<br>yum install python-devel libffi-devel openssl-devel<br>pip install pyopenssl ndg-httpsclient pyasn1</p>
+</li>
+<li><p>如果ss client连不上,看看是不是防火墙没设好<br>可以用telnet 检查相应的端口是否能连接成功</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/11/自己搭的梯子就是快/" data-id="cij9i1to10000a8cmf14d4klq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Centos6-7-gfirefly搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/07/Centos6-7-gfirefly搭建/" class="article-date">
@@ -131,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/07/Centos6-7-gfirefly搭建/" data-id="cij40p0kx000j24cmxrl16gea" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/07/Centos6-7-gfirefly搭建/" data-id="cij9i1tp5000la8cm18e9vgq2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gfirefly/">gfirefly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -184,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/06/centos6-7-python2-6升级到python2-7/" data-id="cij40p0ko000a24cm4ejbh975" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/06/centos6-7-python2-6升级到python2-7/" data-id="cij9i1tov000ca8cmih2lgbou" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -228,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/01/04/狮子老板/" data-id="cij40p0jy000024cmomjlpo3u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/01/04/狮子老板/" data-id="cij9i1ton0003a8cmkrrp27cf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
@@ -271,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/31/My-Girls/" data-id="cij40p0ku000g24cm18mcqmi3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/31/My-Girls/" data-id="cij9i1tp1000ia8cmanri1l4b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
@@ -314,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/What-Are-Words/" data-id="cij40p0kr000d24cmg71145gp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/30/What-Are-Words/" data-id="cij9i1toy000fa8cmxf762wlr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
@@ -375,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/centos6-7-安装python3/" data-id="cij40p0kk000524cmoqkyombq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/30/centos6-7-安装python3/" data-id="cij9i1tos0007a8cmzcpix6e6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -409,6 +481,10 @@
       <ul>
         
           <li>
+            <a href="/2016/01/11/自己搭的梯子就是快/">自己搭的梯子就是快</a>
+          </li>
+        
+          <li>
             <a href="/2016/01/07/Centos6-7-gfirefly搭建/">Centos6.7 gfirefly搭建</a>
           </li>
         
@@ -424,10 +500,6 @@
             <a href="/2015/12/31/My-Girls/">My Girls</a>
           </li>
         
-          <li>
-            <a href="/2015/12/30/What-Are-Words/">What Are Words</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -437,7 +509,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/gfirefly/" style="font-size: 10px;">gfirefly</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/gfirefly/" style="font-size: 10px;">gfirefly</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/python/" style="font-size: 15px;">python</a>
     </div>
   </div>
 
@@ -446,7 +518,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
